@@ -5,6 +5,8 @@
 
 Here, we aim to evaluate the performance of currently available genomic de-novo assemblers when used on ONT and HiFi Pacbio adapting sampling data on loci with segmental duplications. 
 
+# Pipeline and workflow
+
 ## Authors
 - Paula Uittenbogaard (Analysis)
 - Felipe Rojas-Rodriguez (Analysis and repository management)
