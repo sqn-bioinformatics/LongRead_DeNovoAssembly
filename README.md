@@ -1,4 +1,4 @@
-[![Conda Version](https://img.shields.io/conda/vn/bioconda/snakemake)](https://anaconda.org/bioconda/snakemake)
+[![Conda Version](https://img.shields.io/conda/vn/Conda/snakemake)](https://anaconda.org/bioconda/snakemake)
 [![Pypi](https://img.shields.io/pypi/pyversions/snakemake.svg)](https://pypi.org/project/snakemake)
 [![Snakemake](https://img.shields.io/badge/Snakemake-v.8.28-blue)]
 
