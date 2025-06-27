@@ -23,7 +23,7 @@
 # Author: Paula Uittenbogaard
 # Date: 29-04-2025
 
-# To run this pipeline, run 'conda activate simulation', 
+# To run this pipeline, run 'conda activate simulation_study', 
 # followed by 'snakemake -s 0_simulation_pipeline_HiFi.smk --config-file config.yaml --cores 20 --resources mem_mb=100'
 # set -j 1 (1 job at a time) when producing ccs reads, the pbccs package doesn't support to set a temp-dir so all jobs will write to the same temp dir if not set. 
 
@@ -55,7 +55,8 @@ alignment_dir = f"{out_dir}/{{ASSEMBLERS}}/{{TARGETS}}/ac{{ACCURACY}}/rl{{READLE
 #######################
 ## Setting parameters
 #######################
-ERRMODEL = "/home/uitte01p/experimental/test_for_sim_study/test_PBSIM3/pbsim3/data/ERRHMM-RSII.model"
+PBSIM3 = config['pbsim']
+ERRMODEL = config['errormodel_hifi']
 prefix = f"{METHOD}_ac{{ACCURACY}}_rl{{READLENGTH}}_de{{DEPTH}}"
 
 ##################

@@ -54,7 +54,8 @@ alignment_dir = f"{out_dir}/{{ASSEMBLERS}}/{{TARGETS}}/ac{{ACCURACY}}/rl{{READLE
 #######################
 ## Setting parameters
 #######################
-ERRMODEL = "/home/uitte01p/experimental/test_for_sim_study/test_PBSIM3/pbsim3/data/ERRHMM-ONT-HQ.model"
+ERRMODEL = config['errormodel_ont']
+PBSIM3 = config['pbsim']
 prefix = f"{METHOD}_ac{{ACCURACY}}_rl{{READLENGTH}}_de{{DEPTH}}"
 
 ##################
@@ -100,3 +101,11 @@ include: "2_3_miniasm.smk"
 include: "2_4_raven.smk"
 include: "2_5_wtdbg2.smk"
 include: "3_1_alignments.smk"
+
+EMAIL = "paula.uittenbogaard@outlook.com"
+
+onsuccess:
+        shell("mail -s 'DONE' {EMAIL} < {log}")
+
+onerror:
+        shell("mail -s 'ERROR' {EMAIL} < {log}")

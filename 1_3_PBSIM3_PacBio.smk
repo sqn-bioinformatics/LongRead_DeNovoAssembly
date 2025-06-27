@@ -27,7 +27,6 @@
 #######################
 ## Setting directories
 #######################
-PBSIM3 = "/home/uitte01p/experimental/test_for_sim_study/test_PBSIM3/pbsim3/src/./pbsim"
 
 rule pbsim:
     input: 
@@ -40,21 +39,22 @@ rule pbsim:
         f"{RUN_DIR}/{{TARGETS}}/{prefix}.log"
     params:
         error_model = {ERRMODEL},
+        pbsim = {PBSIM3},
         calculated_accuracy=lambda wildcards: [int(item)/100 for item in {wildcards.ACCURACY}]
     shell:
         """
         cd {RUN_DIR}
-        {PBSIM3} --seed {SEED} \
-                 --strategy wgs \
-                 --method errhmm \
-                 --errhmm {params.error_model} \
-                 --depth {wildcards.DEPTH} \
-                 --genome {input} \
-                 --pass-num 10 \
-                 --accuracy-mean {params.calculated_accuracy} \
-                 --length-mean {wildcards.READLENGTH} \
-                 --prefix {wildcards.TARGETS}/{METHOD}_ac{wildcards.ACCURACY}_rl{wildcards.READLENGTH}_de{wildcards.DEPTH} \
-                 2> {log}
+        {params.pbsim}  --seed {SEED} \
+                        --strategy wgs \
+                        --method errhmm \
+                        --errhmm {params.error_model} \
+                        --depth {wildcards.DEPTH} \
+                        --genome {input} \
+                        --pass-num 10 \
+                        --accuracy-mean {params.calculated_accuracy} \
+                        --length-mean {wildcards.READLENGTH} \
+                        --prefix {wildcards.TARGETS}/{METHOD}_ac{wildcards.ACCURACY}_rl{wildcards.READLENGTH}_de{wildcards.DEPTH} \
+                        2> {log}
         """
 
 rule move_output_pbsim:
